@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kimathy’s Personality Generator</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;500&display=swap');
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #E0F7E9; /* Soft pastel green background */
+            color: #4A4A4A;
+            text-align: center;
+            margin-top: 50px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        h1 {
+            color: #4CAF50; /* Green accent for the header */
+            font-size: 2.5em;
+            font-weight: 500;
+            margin-bottom: 10px;
+        }
+
+        p.intro {
+            font-size: 1.1em;
+            color: #555;
+            margin-bottom: 30px;
+            max-width: 500px;
+        }
+
+        .button-container {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            margin-bottom: 10px;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            font-weight: 500;
+            color: #FFF;
+            background-color: #7FC8A9; /* Pastel green button */
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #A4E1C3; /* Lighter green on hover */
+        }
+
+        .personality-box {
+            font-size: 1.2em;
+            color: #333;
+            margin-top: 0; /* No extra spacing */
+            padding-top: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Kimathy’s Personality Generator</h1>
+    <p class="intro">Congrats on picking a girl with a split personality. You’re in for a treat!</p>
+    <p>Choose the vibe: spicy or sweet?</p>
+    <div class="button-container">
+        <button onclick="choosePersonality('spicy')">Spicy</button>
+        <button onclick="choosePersonality('sweet')">Sweet</button>
+    </div>
+    <div id="personality" class="personality-box"></div>
+
+    <script>
+        const spicyPersonalities = [
+            "Bold and unpredictable 🔥",
+            "Obsessive and possessive 🫦",
+            "Spillin' the hot TEA 🍵",
+            "Reckless but kinda cute ✨💅",
+            "Passionate ❤️‍🔥",
+            "Seductive with zero filter 😘",
+            "Confident and daring 😎",
+            "Impulsive, loves to stir things up 🌀",
+            "Might strip after getting drunkie after 🥃🥃🥃",
+            "Throwing hands 👊",
+            "Yelling at any non-Nugs fans 🤬",
+            "Will climb the tree aka her man 😈😈😈😈"
+        ];
+
+        const sweetPersonalities = [
+            "Supportive and warm 💖",
+            "Patient and gentle 🕊️",
+            "Thoughtful and loyal 🌼",
+            "Caring and reliable 🤗",
+            "Tell me everything 😘",
+            "Soft and loving 💕",
+            "Understanding ✨",
+            "I’ll be your sunshine 🌞",
+            "Bubbly 🫧🌻",
+            "Dependable 🛡️",
+            "Smiling and nodding 🙂",
+            "At your service 🤲👑",
+            "Yes sir 🙇🏻‍♀️"
+        ];
+
+        function choosePersonality(type) {
+            let personalities;
+            if (type === 'spicy') {
+                personalities = spicyPersonalities;
+            } else {
+                personalities = sweetPersonalities;
+            }
+            generatePersonality(personalities);
+        }
+
+        function generatePersonality(personalities) {
+            const randomIndex = Math.floor(Math.random() * personalities.length);
+            const randomPersonality = personalities[randomIndex];
+            document.getElementById("personality").innerText = randomPersonality;
+        }
+    </script>
+</body>
+</html>
