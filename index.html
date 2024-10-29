@@ -98,27 +98,41 @@
             "Soft and loving 💕",
             "Understanding ✨",
             "I’ll be your sunshine 🌞",
-            "Bubbly like mimosa 🫧🥂",
+            "Bubbly 🫧🌻",
             "Dependable 🛡️",
             "Smiling and nodding 🙂",
             "At your service 🤲👑",
             "Yes sir 🙇🏻‍♀️"
         ];
 
-        function choosePersonality(type) {
-            let personalities;
-            if (type === 'spicy') {
-                personalities = spicyPersonalities;
-            } else {
-                personalities = sweetPersonalities;
+        let currentSpicyIndex = 0;
+        let currentSweetIndex = 0;
+
+        // Shuffle the personality arrays
+        function shuffle(array) {
+            for (let i = array.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [array[i], array[j]] = [array[j], array[i]];
             }
-            generatePersonality(personalities);
         }
 
-        function generatePersonality(personalities) {
-            const randomIndex = Math.floor(Math.random() * personalities.length);
-            const randomPersonality = personalities[randomIndex];
-            document.getElementById("personality").innerText = randomPersonality;
+        shuffle(spicyPersonalities);
+        shuffle(sweetPersonalities);
+
+        function choosePersonality(type) {
+            let personalities, currentIndex;
+
+            if (type === 'spicy') {
+                personalities = spicyPersonalities;
+                currentIndex = currentSpicyIndex;
+                currentSpicyIndex = (currentSpicyIndex + 1) % personalities.length;
+            } else {
+                personalities = sweetPersonalities;
+                currentIndex = currentSweetIndex;
+                currentSweetIndex = (currentSweetIndex + 1) % personalities.length;
+            }
+
+            document.getElementById("personality").innerText = personalities[currentIndex];
         }
     </script>
 </body>
